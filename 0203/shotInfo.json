@@ -1,0 +1,41 @@
+{
+    "AAA_001": {
+        "geo_type": "pighead",
+        "cam_transform": [
+            -2.7043,
+            2.50581,
+            4.06212
+        ],
+        "cam_rotation": [
+            -30.4744,
+            -38.8465,
+            -3.05957e-06
+        ]
+    },
+    "BBB_001": {
+        "geo_type": "templatebody",
+        "cam_transform": [
+            0.207684,
+            3.17331,
+            -2.52276
+        ],
+        "cam_rotation": [
+            -40.0752,
+            174.118,
+            -6.3501e-06
+        ]
+    },
+    "CCC_001": {
+        "geo_type": "templatehead",
+        "cam_transform": [
+            0.400994,
+            0.650936,
+            0.834343
+        ],
+        "cam_rotation": [
+            -28.456,
+            28.474,
+            -6.60436e-06
+        ]
+    }
+}
