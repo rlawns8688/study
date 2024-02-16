@@ -39,7 +39,7 @@ import time
 import os
 
 
-site.addsitedir('/home/rapa/python/libs')
+site.addsitedir('/home/jun/Desktop/study/libs')
 from qt import library as qt_lib
 from system import library as sys_lib
 from qt.library import LogHandler
