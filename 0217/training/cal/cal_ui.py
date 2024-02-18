@@ -27,10 +27,26 @@ class Calculator(QtWidgets.QWidget):
         pass
 
     def set_ui_btn(self):
-        for i in range(9):
+        for i in range(10):
             btn = QtWidgets.QPushButton(str(i))
             btn.clicked.connect(self.slot_clicked_btn)
             self.grid_layout.addWidget(btn, int(i // 3), int(i % 3))
+
+            if i == 9:
+                value = 'C'
+            elif i == 10:
+                value = '.'
+            # for i in range(9):
+            # # if i == 0:
+            # #     value = 'C'
+            # # elif i == 1:
+            # #     value = '.'
+            # # else:
+            # #     value = i
+            #
+            # btn = QtWidgets.QPushButton(str(i))
+            # btn.clicked.connect(self.slot_clicked_btn)
+            # self.grid_layout.addWidget(btn, int((8 - i) // 3), int((8 - i) % 3))
 
     def slot_clicked_btn(self):
         # print(self.sender().text())

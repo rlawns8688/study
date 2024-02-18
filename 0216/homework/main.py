@@ -46,9 +46,9 @@ class MusicAlarmUI(QtWidgets.QMainWindow, music_alarm_ui.Ui_Form):
             self.timer.stop()  # 시간이 0이 되면 타이머 정지
             self.handle_get_items()
     def resize_webEngineView(self):
-        pass
+        # pass
         # UI의 크기에 맞게 webEngineView의 크기를 조정
-        # self.webEngineView.setGeometry(0, 0, self.ui.centralwidget.width(), self.ui.centralwidget.height())
+        self.webEngineView.setGeometry(0, 0, self.ui.centralwidget.width(), self.ui.centralwidget.height())
     def handle_get_items(self):
         playlist_url = self.lineEdit__URL.text()  # lineEdit_URL 위젯의 입력값 가져오기
         playlist_id = self.extract_playlist_id(playlist_url)  # 플레이리스트 URL에서 ID 추출
@@ -58,8 +58,8 @@ class MusicAlarmUI(QtWidgets.QMainWindow, music_alarm_ui.Ui_Form):
 
         self.get_playlist_items(playlist_id)  # 추출한 플레이리스트 ID를 인자로 get_playlist_items 함수 호출
         #
-        # self.webEngineView.load(QtCore.QUrl(random_video_url))
-        # self.webEngineView.show()
+        self.webEngineView.load(QtCore.QUrl(random_video_url))
+        self.webEngineView.show()
 
     def get_playlist_items(self, playlist_id):
         # 유튜브 API 클라이언트 빌드
