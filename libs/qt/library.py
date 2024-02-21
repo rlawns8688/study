@@ -4,47 +4,74 @@
 # created date  :   2024.02.13
 # modified date  :   2024.02.13
 # description  :
-
+import PySide2
 import pathlib
-from PySide2 import QtWidgets, QtGui
+from PySide2 import QtWidgets, QtGui, QtCore
 import logging
-
-
-
+import typing
+class UISettings:
+    def __init__(self, window: typing.Any, ini_fpath: pathlib.Path, cfg_fpath: pathlib.Path):
+        self.__window = window
+        self.__setting_ini = QtCore.QSettings(ini_fpath.as_posix())
+        self.__setting_cfg = cfg_fpath
+        self.__cfg_dat = dict()
 
 
 class QtLibs:
     @staticmethod
-    def file_dialog(default_path: str) -> pathlib.Path:
-        #파일 경로 변환
-        dia = QtWidgets.QFileDialog.getOpenFileName(dir=default_path)
+    def input_dialog(title: str, label: str, parent=None):
+        text, ok = QtWidgets.QInputDialog.getText(
+            parent, title, label, QtWidgets.QLineEdit.Normal, QtCore.QDir().home().dirName())
+        return ok, text
+
+    @staticmethod
+    def file_dialog(default_path: str, parent=None) -> typing.Union[pathlib.Path, None]:
+        """
+        :param default_path:
+        :param parent:
+        :return:
+        """
+        dia = QtWidgets.QFileDialog.getOpenFileName(parent=parent, dir=default_path)
         if len(dia):
             return pathlib.Path(dia)
         return None
 
     @staticmethod
-    def dir_dialog(default_path: str) -> pathlib.Path:
-        #디렉토리 경로 반환
-        dia = QtWidgets.QFileDialog.getExistingDirectory(dir=default_path)
+    def dir_dialog(default_path: str, parent=None) -> typing.Union[pathlib.Path, None]:
+        """
+        :param default_path:
+        :param parent:
+        :return:
+        """
+        dia = QtWidgets.QFileDialog.getExistingDirectory(parent=parent, dir=default_path)
         if len(dia):
             return pathlib.Path(dia)
         return None
 
+    @staticmethod
+    def center_on_screen(inst):
+        res = QtWidgets.QDesktopWidget().screenGeometry()
+        inst.move((res.width() / 2) - (inst.frameSize().width() / 2),
+                  (res.height() / 2) - (inst.frameSize().height() / 2))
+
+
 class LogHandler(logging.Handler):
     def __init__(self, out_stream=None):
-        super().__init__()
+        super(LogHandler, self).__init__()
         # log text msg format
         self.setFormatter(logging.Formatter('[%(asctime)s] [%(levelname)s] : %(message)s'))
         logging.getLogger().addHandler(self)
         # logging level
         logging.getLogger().setLevel(logging.DEBUG)
         self.__out_stream = out_stream
-    def emit(self, record):
+
+    def emit(self, record) -> None:
         msg = self.format(record)
         self.__out_stream.append(msg)
         self.__out_stream.moveCursor(QtGui.QTextCursor.End)
+
     @staticmethod
-    def log_msg(method=None, msg=''):
+    def log_msg(method=None, msg: str = '') -> None:
         if method is None:
             return
         if method.__name__ == 'info':
@@ -62,6 +89,9 @@ class LogHandler(logging.Handler):
         method(new_msg)
 
 
-
 if __name__ == '__main__':
     pass
+
+
+
+
