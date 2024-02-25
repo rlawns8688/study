@@ -1,0 +1,88 @@
+#! C:/Program Files/Nuke15.0v1/nuke-15.0.1.dll -nx
+#write_info MOV file:"C:/Class/AAA_001/AAA_001_v003.mov" format:"1280 720 1" chans:":rgba.red:rgba.green:rgba.blue:" framerange:"1001 1010" fps:"0" colorspace:"default" datatype:"unknown" transfer:"unknown" views:"main" colorManagement:"Nuke"
+version 15.0 v1
+Root {
+ inputs 0
+ first_frame 1001
+ last_frame 1010
+ format "2048 1556 0 0 2048 1556 1 2K_Super_35(full-ap)"
+ proxy_type scale
+ proxy_format "1024 778 0 0 1024 778 1 1K_Super_35(full-ap)"
+ colorManagement Nuke
+ workingSpaceLUT linear
+ monitorLut sRGB
+ monitorOutLUT rec709
+ int8Lut sRGB
+ int16Lut sRGB
+ logLut Cineon
+ floatLut linear
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file C:/Class/AAA_001/AAA_001_v003_fx/AAA_001_v003_fx_%04d.jpg
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 1010
+ name Read2
+ xpos 400
+}
+Grade {
+ white {0.116431 0.874786 1 1}
+ name Grade1
+ xpos 400
+ ypos 200
+}
+set N4f4a0800 [stack 0]
+Blur {
+ size 37
+ name Blur2
+ xpos 800
+ ypos 200
+}
+push $N4f4a0800
+Blur {
+ size 16
+ name Blur1
+ xpos 600
+ ypos 200
+}
+Merge {
+ inputs 2
+ name Merge1
+ xpos 600
+ ypos 400
+}
+push $N4f4a0800
+Merge {
+ inputs 2
+ name Merge2
+ xpos 400
+ ypos 600
+}
+Read {
+ inputs 0
+ file_type jpeg
+ file C:/Class/AAA_001/AAA_001_v003_geo/AAA_001_v003_geo_%04d.jpg
+ format "1280 720 0 0 1280 720 1 HD_720"
+ first 1001
+ last 1010
+ name Read1
+ xpos 0
+}
+Merge {
+ inputs 2
+ name Merge3
+ xpos 0
+ ypos 600
+}
+Write {
+ file C:/Class/AAA_001/AAA_001_v003.mov
+ file_type mov
+ ocioColorspace scene_linear
+ display default
+ view sRGB
+ name MOV
+ xpos 0
+ ypos 800
+}

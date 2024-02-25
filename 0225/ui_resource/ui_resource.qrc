@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icon">
+    <file>sync.png</file>
+    <file>arrow_right.png</file>
+    <file>arrow_down.png</file>
+  </qresource>
+</RCC>

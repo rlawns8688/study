@@ -1,0 +1,7 @@
+shot_code,geo_type,cam_transform_x,cam_transform_y,cam_transform_z,cam_rotation_x,cam_rotation_y,cam_rotation_z,project,status,task,shot_status,user,start_date,due_date
+AAA_001,pighead,-2.7043,2.50581,4.06212,-30.4744,-38.8465,-3.05957e-06,R&D,assign,electric,assign,"{'id': 111, 'name': 'simon'}",2024-02-24,2024-03-20
+BBB_001,templatebody,0.207684,3.17331,-2.52276,-40.0752,174.118,-6.3501e-06,R&D,wip,electric,wip,"{'id': 111, 'name': 'simon'}",2024-02-22,2024-03-12
+CCC_001,templatehead,0.400994,0.650936,0.834343,-28.456,28.474,-6.60436e-06,R&D,retake,electric,retake,"{'id': 111, 'name': 'simon'}",2024-02-20,2024-03-01
+DDD_001,pighead,-2.7043,2.50581,4.06212,-30.4744,-38.8465,-3.05957e-06,R&D,done,ocean,done,"{'id': 444, 'name': 'mendy'}",,
+EEE_001,templatebody,0.207684,3.17331,-2.52276,-40.0752,174.118,-6.3501e-06,R&D,hld,fire,dir,"{'id': 555, 'name': 'silva'}",2024-04-07,2024-05-07
+FFF_001,templatehead,0.400994,0.650936,0.834343,-28.456,28.474,-6.60436e-06,R&D,omt,smoke,omt,"{'id': 666, 'name': 'luka'}",2024-11-11,2024-12-24
