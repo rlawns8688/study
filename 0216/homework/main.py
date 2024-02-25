@@ -9,14 +9,17 @@
 # description  :
 
 import site
-# site.addsitedir('/home/rapa/std/study/0216/homework')
+site.addsitedir('/home/rapa/study')
 from PySide2 import QtWidgets, QtCore, QtGui
-import sys
+import os, sys
 from PySide2.QtWebEngineWidgets import QWebEngineView
+from PySide2.QtCore import QUrl
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 import music_alarm_ui
 import random
+
+
 
 
 class MusicAlarmUI(QtWidgets.QMainWindow, music_alarm_ui.Ui_Form):

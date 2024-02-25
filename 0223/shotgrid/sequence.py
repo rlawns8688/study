@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # encoding=utf-8
-# author        :   kim junhyuk
-# created date  :   2024.02.23
-# modified date  :   2024.02.23
-# description  :   
+
+# author        : seongcheol jeon
+# created date  : 2024.02.23
+# modified date : 2024.02.23
+# description   :
 import os
-class Asset:
+class Sequence2:
     def __init__(self, sg, proj):
         self.proj = proj
         self.name = ""
@@ -23,9 +24,8 @@ class Asset:
     #     shot_list = self.sg.find("Shot", filters, fields)
     #     return shot_list
 
-    def update(self, id, data):
+    def update(self,id,data):
         return self.sg.update('Sequence', id, data)
-
 
 if __name__ == '__main__':
     pass

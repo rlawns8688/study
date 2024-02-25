@@ -1,17 +1,27 @@
 import shotgun_api3
-SERVER_PATH = "https://rapa.shotgrid.autodesk.com"
-SCRIPT_NAME = "junhyuk_script_api"
-SCRIPT_KEY = "ku@hsncnetgbtgrwwHs8zlxzi"
-sg = shotgun_api3.Shotgun(SERVER_PATH, SCRIPT_NAME, SCRIPT_KEY)
-project = sg.find("Project", [["name","is","junhyuk"]], ["name", "id"])
-# print(project)
-# project_list = sg.find("Project", [], ["name", "id"])
-shot_desc =  {
-    "project" : project,
-    "code" : "S004_0010",
-    "description" : "This is a test shot",
-    "sg_status_list" : "ip"
-}
+from pprint import pprint
+sg = shotgun_api3.Shotgun(
+            "https://rapa.shotgrid.autodesk.com",
+                        script_name='junhyuk_script_api',
+                        api_key= 'ahywvbPlczeldyxxig2o$kirh')
 
-result_shot = sg.create("Shot",shot_desc)
-print(result_shot)
+# result = sg.find_one("Project",
+#                  filters=[
+#                           ['name', 'is','JUNHYUK']
+#                           ], #is는 양옆에 같음
+#                  fields=['Project'])
+# pprint(result)
+#
+# result = sg.find('Sequence',
+#                  filters=[["project", "is", {"id":123, "type": "Project"}]], #is는 양옆에 같음
+#                  fields=['shot'])
+pprint(result)
+#is는 양옆에 같음
+# result = sg.delete("Shot", 865)
+# data = {
+#     'description': 'hi im junhyuk',
+#     'sg_status_list': 'rev'
+#     }
+# result = sg.update('Version',673, data)
+
+

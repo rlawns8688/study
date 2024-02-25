@@ -1,43 +1,43 @@
 import time
-
-from PySide2 import QtCore, QtGui, QtWidgets
-import functools
 import uuid
+import functools
+from PySide2 import QtCore, QtGui, QtWidgets
+
 class Signals(QtCore.QObject):
-    progress = QtCore.Signal(str, int)
+    progress = QtCore.Signal(int)
     started = QtCore.Signal(bool)
     finished = QtCore.Signal(bool)
 
 
+
 class WorkerThread(QtCore.QRunnable):
-    def __init__(self, w_id):
+    def __init__(self):
         super().__init__()
-        self.w_id = w_id
         self.signals = Signals()
+        self.count_id = int
+        self.w_list = list()
+
 
     def run(self):
         self.signals.started.emit(True)
         num = 0
         while num <= 100:
+            self.signals.progress.emit(self.count_id,num)
             num += 1
             time.sleep(0.2)
-            self.signals.progress.emit(self.w_id, num)
-            # if num >= num:
-            #     print('hi')
-
             # time sleep과 thread sleep의 차이는 ?? 똑같음.
         self.signals.finished.emit(True)
 
 class MainWindow(QtWidgets.QMainWindow):
-    def __init__(self):
+      def __init__(self):
         super().__init__()
         w = QtWidgets.QWidget()
-        # self.__count_widget = 0
+
+        self.id_counter = 0
+        self.progress_counter = 0
+
         # variable
         self.__thread = list()
-        self.th_count = dict()
-        self.__ratio = list()
-        self.set_widgets()
 
         self.progress = QtWidgets.QProgressBar()
         btn_start = QtWidgets.QPushButton('start')
@@ -59,48 +59,38 @@ class MainWindow(QtWidgets.QMainWindow):
         print('Maximum thread : ',self.threadpool.maxThreadCount())
         btn_start.pressed.connect(self.start_thread)
 
-    def set_widgets(self):
-        for i in range(len(self.__thread)):
-            w_id = uuid.uuid4().hex
-            th = WorkerThread(w_id)
-            th.signals.progress.connect(functools.partial(self.update_progress))
-            self.__widget_data[w_id] = th
+      def start_thread(self):
 
-
-    @QtCore.Slot(str, int)
-    def update_progress(self, w_id, val):
-            w: MainWindow.Ui_Form = self.__widget_data[w_id]
-            w.progressBar.setValue(val)
-
-    def start_thread(self):
-            thread = WorkerThread(self.w_id)
+            thread = WorkerThread()
             thread.signals.started.connect(self.slot_started)
             thread.signals.finished.connect(self.slot_finished)
-            thread.signals.progress.connect(functools.partial(self.update_progress))
+            thread.signals.progress.connect(self.slot_progress)
             self.__thread.append(thread)
             self.threadpool.start(thread)
 
-            print(len(self.__thread))
+            print(self.__thread)
 
+      def slot_progress(self, val):
+            self.progress_counter += val  # 진행 상태를 카운팅합니다.
+            average_progress = self.progress_counter / self.id_counter
+            self.progress.setValue(average_progress if average_progress <= 100 else 100)
 
+      def slot_started(self):
+            self.id_counter += 1
+            print(f'thread count:  {self.id_counter}')
 
-    def slot_progress(self, val):
-        self.progress.setValue(val)
+      def slot_finished(self):
+            self.id_counter -= 1  # 완료된 쓰레드의 수를 감소시킵니다.
+            if self.id_counter == 0:
+                self.progress.setValue(100)
+            print('finished thread')
 
-    def slot_started(self):
-        # self.__count_widget += 1
-        print('start thread')
+            # thread 연결하기
+            # pressed와 click의 차이 = pressed는 버튼을 누르고 있는 상태로 만드는 것
+            # click은
 
-
-    def slot_finished(self):
-        print('finished thread')
-
-        # thread 연결하기
-        # pressed와 click의 차이 = pressed는 버튼을 누르고 있는 상태로 만드는 것
-        # click은
-
-        # btn_start.pressed.
-        # btn_stop
+            # btn_start.pressed.
+            # btn_stop
 
 
 

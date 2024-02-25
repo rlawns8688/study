@@ -1,14 +1,10 @@
-#!/usr/bin/env python
-# encoding=utf-8
-# author        :   kim junhyuk
-# created date  :   2024.02.13
-# modified date  :   2024.02.13
-# description  :
-import PySide2
-import pathlib
-from PySide2 import QtWidgets, QtGui, QtCore
-import logging
 import typing
+import logging
+import pathlib
+
+from PySide2 import QtWidgets, QtGui, QtCore
+
+
 class UISettings:
     def __init__(self, window: typing.Any, ini_fpath: pathlib.Path, cfg_fpath: pathlib.Path):
         self.__window = window
@@ -91,6 +87,8 @@ class LogHandler(logging.Handler):
 
 if __name__ == '__main__':
     pass
+
+
 
 
 

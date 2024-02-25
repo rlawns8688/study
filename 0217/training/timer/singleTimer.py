@@ -10,7 +10,8 @@ import sys
 import typing
 import importlib
 
-# import qdarktheme
+
+import qdarktheme
 from pydantic import BaseModel
 from PySide2 import QtWidgets, QtGui, QtCore
 

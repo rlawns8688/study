@@ -22,3 +22,17 @@ version_desc = {
     "entity": result_shot,
     "sg_path_to_movie": "/home/rapa/Downloads/apples.mov",
 }
+# result = sg.find("Shot",
+#                  filters=[["sg_status_list", "is", "wtg"],
+#                           ["project", "is", {"id":123, "type": "Project"}]
+#                           ],
+#                  fields=["code", "sg_status_list", "project"])
+#
+# data = {
+#     'description': 'Open on a beautiful field with fuzzy bunnies',
+#     'sg_status_list': 'ip'
+#     }
+# result2 = sg.update('Asset', 1226, data)
+#
+
+
