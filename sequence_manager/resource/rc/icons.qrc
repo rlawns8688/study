@@ -1,0 +1,7 @@
+<RCC>
+  <qresource prefix="icons">
+    <file>../icons/drive_file_move_24dp.png</file>
+    <file>../icons/mosaic_24dp.png</file>
+    <file>../icons/round_bubble_chart_24dp.png</file>
+  </qresource>
+</RCC>
