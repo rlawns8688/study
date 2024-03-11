@@ -10,20 +10,20 @@ import sys
 import typing
 import importlib
 
-# import qdarktheme
-# from pydantic import BaseModel
+import qdarktheme
+from pydantic import BaseModel
 from PySide2 import QtWidgets, QtGui, QtCore
 
-# from resources.ui import timer_ui
-# from libs.system import library as sys_lib
-# from libs.qt import library as qt_lib
-# from libs.qt import stylesheet
-# from libs.algorithm.library import BitMask
-#
-# importlib.reload(timer_ui)
-# importlib.reload(sys_lib)
-# importlib.reload(qt_lib)
-# importlib.reload(stylesheet)
+from resources.ui import timer_ui
+from libs.system import library as sys_lib
+from libs.qt import library as qt_lib
+from libs.qt import stylesheet
+from libs.algorithm.library import BitMask
+
+importlib.reload(timer_ui)
+importlib.reload(sys_lib)
+importlib.reload(qt_lib)
+importlib.reload(stylesheet)
 #
 
 class BGImageStylesheet:

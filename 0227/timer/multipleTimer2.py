@@ -17,7 +17,7 @@ import functools
 from PySide2 import QtWidgets, QtGui, QtCore
 
 from resources.ui import timer_template_ui
-from system import library as sys_lib
+from libs.system import library as sys_lib
 
 
 
