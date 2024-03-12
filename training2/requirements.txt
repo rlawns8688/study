@@ -1,0 +1,6 @@
+
+pyqtdarktheme
+pydantic
+pyside2
+orjson
+pytest

@@ -1,0 +1,34 @@
+{
+  "root": {
+    "assets": {
+      "water": {
+        "name": "water bomb",
+        "range": "1001-1024",
+        "project": ["NSS", "JET"],
+        "author": "anonymous",
+        "fps": "24"
+      },
+      "fire": {
+        "name": "fire bomb",
+        "range": "1001-1024",
+        "project": ["NSS", "JET"],
+        "author": "anonymous",
+        "fps": "24"
+      },
+      "sand": {
+        "name": "sand bomb",
+        "range": "1001-1024",
+        "project": ["NSS", "JET"],
+        "author": "anonymous",
+        "fps": "24"
+      },
+      "ocean": {
+        "name": "ocean",
+        "range": "1001-1024",
+        "project": ["NSS", "JET"],
+        "author": "anonymous",
+        "fps": "24"
+      }
+    }
+  }
+}
